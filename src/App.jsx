@@ -4,7 +4,7 @@ import "./App.css";
 
 function App() {
   const apiKey = `af975e14`;
-  const baseUrl = `http://www.omdbapi.com`;
+  const baseUrl = `https://www.omdbapi.com`;
   const [searchInput, setSearchInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
