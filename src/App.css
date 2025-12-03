@@ -9,6 +9,9 @@
      font-family: "Open Sans", sans-serif;
      background-color: black;
      padding-top: 10px;
+       min-height: 100vh;
+
+
 
 
 }
@@ -171,5 +174,8 @@ input{
   height: 15px;
   margin-left: 7px;
 
+}
+.main-container{
+  min-height: 100vh;
 }
 }
