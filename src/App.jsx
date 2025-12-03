@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
+import searchimg from "../src/assets/images/Vector (3).png"
 
 function App() {
   const apiKey = `af975e14`;
@@ -26,7 +27,7 @@ function App() {
 
       if (res.data.Response === "False") {
         
-        setError("Movie not found, check spelling or internet and try again");
+        setError("Movie not found, check spelling.");
         return;
       }
 
@@ -43,7 +44,7 @@ function App() {
   };
 
   const getRandomMovies = async (frontPage = 1)=>{
-    const words = ["flash", "lord of the rings", "princess", "arrow", "hero academia", "power Rangers","bettle", "justice", "anime", "superman", "witcher", "hulk"]
+    const words = ["flash", "lord of the rings", "princess", "arrow", "hero academia", "power Rangers","bettle", "justice", "anime", "superman", "witcher", "hulk", "Frozen"]
     const randomMovies = words[Math.floor(Math.random() * words.length)]
 
     try{
@@ -74,8 +75,10 @@ useEffect(() => {
   
 
   return (
-    <div>
+    <div >
+      <div className="main-container">
       <div className=" input-container">
+      <div>
         <input
           type="text"
           name=""
@@ -93,12 +96,15 @@ useEffect(() => {
             }
           }}
           
+          
         />
-        <button onClick={() => getMovie()}> Search</button>
+        </div>
+        <span className="search-img" onClick={()=> getMovie()}><img src={searchimg} alt="" /></span>
+        {/* <button onClick={() => getMovie()}> Search</button> */}
         
       </div>
-      {isLoading && <p className="loading">Loading,Please wait...</p>}
-      {error && <p className="error">{error}</p>}
+      {isLoading && <small className="loading">Loading,Please wait...</small>}
+      {error && <small className="error">{error}</small>}
     <div className="result">{movieData && <p>Movies found: {searchReult} </p>}</div>  
 
    <div className="movie-data">   {movieData &&
@@ -106,7 +112,12 @@ useEffect(() => {
           <div key={item.imdbID} className="single-movie">
             <div className="img">
               {" "}
+              <div className="type-holder">
+                <p></p>
+              <p className="type">{item.Type}</p>
+              </div>
               <img src={item.Poster ? item.Poster : "No image"} alt="" />
+             
             </div>
             <p className="title">{item.Title}</p>
             <p>{item.Year}</p>
@@ -118,12 +129,13 @@ useEffect(() => {
        
 </div>
        <div className="pagination">
-         {page && ( <button onClick={()=> getMovie(page - 1)}
+         {movieData && ( <button onClick={()=> getMovie(page - 1)}
              disabled={page === 1}>Prev</button>
 )}
          
             {movieData && movieData.length > 0 && (<button onClick={()=> getMovie(page + 1)} disabled={page >= Math.ceil(searchReult / 10)}>Next</button>)}  
         </div>
+    </div>
     </div>
   );
 }
