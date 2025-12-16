@@ -241,6 +241,7 @@ p {
   display: flex;
   gap: 32px;
 }
+
 .season {
   font-weight: 500;
   font-size: 24px;
@@ -347,4 +348,7 @@ p {
   margin-bottom: 40px;
   font-weight: 600;
   font-size: 24px;
+}
+.sector-5{
+  padding-bottom:100px ;
 }
