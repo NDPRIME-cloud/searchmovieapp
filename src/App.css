@@ -426,7 +426,17 @@ h1 {
 .selection-holder {
   display: flex;
   margin-bottom: 20px;
+
 }
+.info-poster{
+  
+}
+
+
+
+
+
+
 
 @media (max-width: 480px) {
   .input-container {

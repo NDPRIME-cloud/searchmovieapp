@@ -3,6 +3,8 @@ import React from 'react'
 
 import { Routes,Route } from "react-router-dom"
 import "./App.css";
+import Header from "./components/Header";
+import MoviInfo from "./components/MoviInfo";
 
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
       <Routes>
 
         <Route path="/" element={<FrontPage/>}/>
+        <Route path="/info" element={<MoviInfo/>}/>
 
 
 

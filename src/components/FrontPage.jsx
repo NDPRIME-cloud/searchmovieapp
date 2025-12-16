@@ -11,7 +11,7 @@ import play from "../assets/images/Vector (6).png";
 import later from "../assets/images/Vector (7).png";
 import seemore from "../assets/images/Group 5.png";
 import smallarrow from "../assets/images/Vector (8).png";
-
+import Header from "./Header";
 const FrontPage = () => {
   const apiKey = `af975e14`;
   const baseUrl = `https://www.omdbapi.com`;
@@ -135,103 +135,21 @@ const FrontPage = () => {
   return (
     <div>
       <div className="main-container">
-        <div className="nav-bar">
-          <div className="first-handle">
-            <div className="one-a">
-              <NavLink to="/">Home</NavLink>
-              <span className="dot">
-                <img src={dot} alt="" />
-              </span>
-            </div>
-
-            <div className="one-a">
-              <NavLink to="/">Genre</NavLink>
-              <span className="dot">
-                <img src={dot} alt="" />
-              </span>
-            </div>
-
-            <div className="one-a">
-              <NavLink to="/">Country</NavLink>
-              <span className="dot">
-                <img src={dot} alt="" />
-              </span>
-            </div>
-          </div>
-          <div className=" input-container">
-            <div>
-              <input
-                type="text"
-                name=""
-                id=""
-                value={searchInput}
-                onChange={(e) => {
-                  setSearchInput(e.target.value.trimStart());
-                  setError("");
-                }}
-                placeholder="search movies..."
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && searchInput.trim()) {
-                    getMovie();
-                  }
-                }}
-              />
-            </div>
-
-            <span className="search-img" onClick={() => getMovie()}>
-              <img src={searchimg} alt="" />
-            </span>
-            {/* <button onClick={() => getMovie()}> Search</button> */}
-          </div>
-          <div className="second-handle">
-            <div className="one-a">
-              <NavLink to="/">Movies</NavLink>
-              <span className="dot">
-                <img src={dot} alt="" />
-              </span>
-            </div>
-
-            <div className="one-a">
-              <NavLink to="/">Series</NavLink>
-              <span className="dot">
-                <img src={dot} alt="" />
-              </span>
-            </div>
-
-            <div className="one-a">
-              <NavLink to="/">Animation</NavLink>
-              <span className="dot">
-                <img src={dot} alt="" />
-              </span>
-            </div>
-          </div>
-          <div className="third-handle">
-            <div className="one-a">
-              <NavLink to="/">Login</NavLink>
-              <span className="dot">
-                <img src={dot} alt="" />
-              </span>
-            </div>
-            <span>/</span>
-            <div className="one-a">
-              <NavLink to="/">Signup</NavLink>
-              <span className="dot">
-                <img src={dot} alt="" />
-              </span>
-            </div>
-          </div>
-          <div className="fourth-handle">
-            <NavLink>
-              <img src={bell} alt="" />
-            </NavLink>
-          </div>
-        </div>
+       <Header
+       dot={dot}
+       searchInput={searchInput}
+       setError={setError}
+       setSearchInput={setSearchInput}
+       getMovie={getMovie}
+       searchimg={searchimg}
+       bell={bell}
+       />
         {isLoading && <small className="loading">Loading,Please wait...</small>}
         {error && <small className="error">{error}</small>}
         <div>
           <div className="slideShow">
             {movieData && (
-              <div>
+              <Link to= "/info">
                 <img src={movieData[index].Poster} alt="" />
                 <div className="schedule">
                   <button>
@@ -248,7 +166,7 @@ const FrontPage = () => {
                   </button>
                 </div>
                 <h1 className="slideTitle">{movieData[index].Title}</h1>
-              </div>
+              </Link>
             )}
           </div>
         </div>
@@ -403,13 +321,13 @@ const FrontPage = () => {
               <div className="recommended">
                 {contentType === "series"
                   ? seriesData?.slice(0, 8).map((item, id) => (
-                      <div key={id} className="new-release-holder">
+                      <Link key={id} className="new-release-holder">
                         <img src={item.Poster} alt="" />
                         <div className=" trending-tag">
                           <p className="trending-lines">{item.Title}</p>
                           <p className="genre">{item.Type}</p>
                         </div>
-                      </div>
+                      </Link>
                     ))
                   : moviesData?.slice(0, 8).map((item, id) => (
                       <div key={id} className="new-release-holder">
