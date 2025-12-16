@@ -290,7 +290,7 @@ const MoviInfo = () => {
                 <div>
                   <p>james</p>
                   <div className="comment-input">
-                    <input
+                    <textarea
                       type="text"
                       name=""
                       id=""

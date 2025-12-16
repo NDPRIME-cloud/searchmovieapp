@@ -315,9 +315,13 @@ p {
   padding-left: 15px;
 
 }
-.comment-input input{
+.comment-input textarea{
   width: 750px;
   padding-top: 16px;
+  border: none;
+  resize: none;
+  outline: none;
+  
 
 
 }
